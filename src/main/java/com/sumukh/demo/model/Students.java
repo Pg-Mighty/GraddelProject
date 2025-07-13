@@ -1,9 +1,15 @@
 package com.sumukh.demo.model;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Getter;
+
+@Getter
+@Entity
 public class Students {
 
-
+    @Id
     int roll;
     String name;
 
@@ -13,16 +19,13 @@ public class Students {
         this.name = name;
     }
 
-    public int getRoll() {
-        return roll;
+    public Students() {
+
     }
+
 
     public void setRoll(int roll) {
         this.roll = roll;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
