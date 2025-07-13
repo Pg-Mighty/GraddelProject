@@ -1,6 +1,7 @@
 package com.sumukh.demo.Service;
 
 import com.sumukh.demo.Repo.repo;
+import com.sumukh.demo.UserPrincipals;
 import com.sumukh.demo.model.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,14 +21,12 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Students student = repo.findByUsername("Sumukh");
+        Students student = repo.findByUsername(username);
 
-        if(student != null){
-            System.out.println("User Found");
-
-        }else{
+        if(student == null){
             throw new UsernameNotFoundException("User Not Found");
         }
-        return null;
+
+        return new UserPrincipals(student);
     }
 }

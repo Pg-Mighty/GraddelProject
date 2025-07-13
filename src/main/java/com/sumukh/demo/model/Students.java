@@ -12,6 +12,7 @@ public class Students {
     @Id
     int roll;
     String name;
+    String password;
 
 
     public Students(int id ,String name){

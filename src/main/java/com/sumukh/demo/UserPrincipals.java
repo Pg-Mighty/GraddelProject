@@ -1,25 +1,36 @@
 package com.sumukh.demo;
 
+import com.sumukh.demo.model.Students;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class UserPrincipals implements UserDetails {
+
+    Students student ;
+
+    public UserPrincipals(Students student){
+        this.student = student;
+    }
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return Collections.singleton(new SimpleGrantedAuthority("Student"));
     }
 
     @Override
     public String getPassword() {
-        return "";
+        return student.getName();
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return student.getName();
     }
 
     @Override
