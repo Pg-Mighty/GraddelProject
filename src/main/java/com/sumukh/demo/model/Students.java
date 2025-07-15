@@ -4,19 +4,21 @@ package com.sumukh.demo.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 @Entity
 public class Students {
 
     @Id
-    int roll;
+    int id;
     String name;
     String password;
 
 
     public Students(int id ,String name){
-        this.roll = id;
+        this.id = id;
         this.name = name;
     }
 
@@ -25,18 +27,11 @@ public class Students {
     }
 
 
-    public void setRoll(int roll) {
-        this.roll = roll;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     public String toString() {
         return "Students{" +
-                "roll=" + roll +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
