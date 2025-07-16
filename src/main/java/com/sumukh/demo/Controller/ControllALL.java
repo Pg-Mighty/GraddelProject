@@ -15,7 +15,15 @@ import java.util.List;
 @RestController
 public class ControllALL {
 
+
     List<Students> list = new ArrayList<>();
+
+
+    @PostMapping("/signup")
+        public void signup(@RequestBody Students student){
+
+
+    }
 
 
     @GetMapping("/csrf-token")
