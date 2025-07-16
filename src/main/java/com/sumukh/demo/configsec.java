@@ -1,6 +1,7 @@
 package com.sumukh.demo;
 
 
+import com.sumukh.demo.Service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -18,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class configsec {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private MyUserDetailsService userDetailsService;
 
 
     @Bean
@@ -38,6 +39,8 @@ public class configsec {
                  provide
                          .setPasswordEncoder(NoOpPasswordEncoder.getInstance());
                          provide.setUserDetailsService(userDetailsService);
+
+                         System.out.println("From: configsec: "+provide);
 
         return provide;
     }
