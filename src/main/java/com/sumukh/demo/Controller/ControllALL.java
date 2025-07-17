@@ -1,8 +1,10 @@
 package com.sumukh.demo.Controller;
 
 
+import com.sumukh.demo.Service.RegisterService;
 import com.sumukh.demo.model.Students;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,16 +17,22 @@ import java.util.List;
 @RestController
 public class ControllALL {
 
-
+    @Autowired
+    RegisterService registerService ;
     List<Students> list = new ArrayList<>();
 
 
     @PostMapping("/signup")
         public void signup(@RequestBody Students student){
 
-
+            registerService.register(student);
     }
 
+    @PostMapping("/login")
+    public void login(@RequestBody Students student){
+
+        loginServie verify(student);
+    }
 
     @GetMapping("/csrf-token")
     public CsrfToken getToken(HttpServletRequest request){
