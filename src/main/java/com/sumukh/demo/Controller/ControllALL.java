@@ -1,6 +1,7 @@
 package com.sumukh.demo.Controller;
 
 
+import com.sumukh.demo.Service.MyUserDetailsService;
 import com.sumukh.demo.Service.RegisterService;
 import com.sumukh.demo.model.Students;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +22,8 @@ public class ControllALL {
     RegisterService registerService ;
     List<Students> list = new ArrayList<>();
 
+    @Autowired
+    RegisterService reg;
 
     @PostMapping("/signup")
         public void signup(@RequestBody Students student){
@@ -29,9 +32,9 @@ public class ControllALL {
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody Students student){
+    public String login(@RequestBody Students student){
 
-        loginServie verify(student);
+       return reg.verify(student);
     }
 
     @GetMapping("/csrf-token")
