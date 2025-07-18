@@ -29,4 +29,9 @@ public class MyUserDetailsService implements UserDetailsService {
         System.out.println( "From MyuserDetails: " + new UserPrincipals(student));
         return new UserPrincipals(student);
     }
+
+
+
+
+
 }
