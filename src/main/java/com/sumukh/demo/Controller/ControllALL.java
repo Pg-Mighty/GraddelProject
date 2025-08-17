@@ -22,9 +22,6 @@ public class ControllALL {
     RegisterService registerService ;
     List<Students> list = new ArrayList<>();
 
-    @Autowired
-    RegisterService reg;
-
     @PostMapping("/signup")
         public void signup(@RequestBody Students student){
 
@@ -33,8 +30,8 @@ public class ControllALL {
 
     @PostMapping("/login")
     public String login(@RequestBody Students student){
-
-       return reg.verify(student);
+        System.out.println("From: RegisterService: ");
+       return registerService.verify(student);
     }
 
     @GetMapping("/csrf-token")
