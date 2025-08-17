@@ -10,4 +10,6 @@ public interface repo extends JpaRepository<Students, Integer> {
 
 
     Students findByName(String username);
+
+
 }
