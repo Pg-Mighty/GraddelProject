@@ -51,7 +51,7 @@ public class ControllALL {
 
     @GetMapping("/students")
     public List<Students> getStudents(){
-        list.add(new Students(0, "Dummy"));    // index 0
+        list.add(new Students(0, "Dummy"));
         list.add(1, new Students(1, "Sumukh"));
         return list;
     }
