@@ -2,6 +2,7 @@ package com.sumukh.demo;
 
 
 import com.sumukh.demo.Service.MyUserDetailsService;
+import com.sumukh.demo.fliters.jwtFilter;
 import com.sumukh.demo.model.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ public class configsec {
 
 
     @Bean
-    public SecurityFilterChain filter(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filter(HttpSecurity http, jwtFilter jwtFilter) throws Exception {
 
         http.csrf(customizer -> customizer.disable())
              .authorizeHttpRequests(req -> req
