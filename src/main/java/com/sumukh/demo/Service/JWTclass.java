@@ -2,14 +2,10 @@ package com.sumukh.demo.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -37,8 +33,9 @@ public class JWTclass {
     }
 
 
-    public void verify(String token){
-        JWT.require(Algorithm.HMAC256(key)).build().verify(token);
+    public boolean verify(String token, String username){
+
+        return JWT.require(Algorithm.HMAC256(key)).build().verify(token).getSubject().equals(username);
     }
 
 
@@ -57,6 +54,10 @@ public class JWTclass {
                 .withExpiresAt(new Date(System.currentTimeMillis()+1000*60*60*24*7))
                 .sign(Algorithm.HMAC256(key));
 
+    }
+
+    public String getUsername(String token) {
+        return JWT.require(Algorithm.HMAC256(key)).build().verify(token).getSubject();
     }
 }
 
